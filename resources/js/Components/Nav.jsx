@@ -1,12 +1,14 @@
 import { blueToViolet } from '@/modules/styles'
 import { useState } from 'react'
-import { Link } from '@inertiajs/react'
-import LoginModal from '@/Pages/Auth/LoginModal'
+import { Link, usePage } from '@inertiajs/react'
 import { RiLoginCircleLine } from "react-icons/ri";
+import { LayoutDashboard } from 'lucide-react';
 
 const Nav = () => {
 
-    const [open, setModal] = useState(false)
+    const { auth } = usePage().props
+
+    // console.log(auth.user)
 
     return (
         <div>
@@ -21,27 +23,43 @@ const Nav = () => {
                             </div>
                         </div>
                         <div className="d-flex h-100 align-items-center justify-content-center">
-                            <button
-                                onClick={() => setModal(!open)}
-                                className="px-3 py-1 rounded-pill bg-dark text-white poppins-semibold d-none d-md-flex align-items-center justify-content-center"
-                            >
-                                <span className="">Login</span>
-                                {/* <RiLoginCircleLine className="ms-2" color='#1A53E4' /> */}
-                            </button>
-                            <Link
-                                href=""
-                                className="p-2 rounded-circle bg-dark text-white poppins-semibold d-flex d-md-none align-items-center justify-content-center"
-                            >
-                                <RiLoginCircleLine color='white' />
-                            </Link>
+                            {auth.user ? (
+                                <>
+                                    <Link
+                                        href="/dashboard"
+                                        className="px-3 py-2 rounded-pill bg-dark text-white poppins-semibold d-none d-md-flex align-items-center"
+                                    >
+                                        Dashboard
+                                    </Link>
+                                    <Link
+                                        href="/dashboard"
+                                        className="p-2 rounded-circle bg-dark text-white poppins-semibold d-md-none d-flex align-items-center"
+                                    >
+                                        <LayoutDashboard size={18} />
+                                    </Link>
+                                </>
+                            ) : (
+                                <>
+                                    <Link
+                                        href="/login"
+                                        className="px-3 py-2 rounded-pill bg-dark text-white poppins-semibold d-none d-md-flex align-items-center justify-content-center"
+                                    >
+                                        <span className="">Login</span>
+                                        {/* <RiLoginCircleLine className="ms-2" color='#1A53E4' /> */}
+                                    </Link>
+                                    <Link
+                                        href="/login"
+                                        className="p-2 rounded-circle bg-dark text-white poppins-semibold d-flex d-md-none align-items-center justify-content-center"
+                                    >
+                                        <RiLoginCircleLine color='white' />
+                                    </Link>
+                                </>
+                            )}
                         </div>
                     </div>
                 </div>
             </nav>
 
-            <LoginModal isOpen={open} onClose={() => setModal(false)}>
-                Login Modal
-            </LoginModal>
         </div>
     )
 }

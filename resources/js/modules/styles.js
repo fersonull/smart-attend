@@ -5,6 +5,11 @@ export const blueToViolet = {
     color: 'transparent',
 }
 
+export const bgGradientButton = {
+    backgroundImage: 'linear-gradient(to right, #007bff, #6610f2)',
+    color: '#FAFAFA'
+}
+
 export const linearBg = {
     backgroundImage: 'linear-gradient(to top, #6610f2 10%, #fff 90%)',
 }

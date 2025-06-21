@@ -21,8 +21,8 @@ a, h1, h2, p {
 }
 
 .main-bg {
-    background-Color: #F7F7F7;
-    background-image: linear-gradient(to bottom, #fafafa, #d3c7ff, #af94ff, #8b5efb, #6610f2);
+    background-Color: #FAFAFA;
+    /* background-image: linear-gradient(to bottom, #fafafa, #d3c7ff, #af94ff, #8b5efb, #6610f2); */
 }
 
 @media (min-width: 992px) {

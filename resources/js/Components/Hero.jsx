@@ -14,7 +14,7 @@ const Hero = () => {
 
     return (
     <div
-        className="d-flex flex-column align-items-center justify-content-center gap-5 mt-lg-5"
+        className="d-flex flex-column align-items-center justify-content-center gap-5 mt-md-5"
     >
         <motion.div
             ref={ref}
