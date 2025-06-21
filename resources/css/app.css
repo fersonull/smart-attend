@@ -25,13 +25,16 @@ a, h1, h2, p {
     background-image: linear-gradient(to bottom, #fafafa, #d3c7ff, #af94ff, #8b5efb, #6610f2);
 }
 
-.w-md {
-    width: 50rem;
+@media (min-width: 992px) {
+    .lg-w-md {
+        width: 50rem;
+    }
 }
 
-.glass {
-    /* backdrop-filter: blur(3px); */
+.fs-8 {
+    font-size: 0.7rem;
 }
+
 
 .gradient {
   background-image: linear-gradient(

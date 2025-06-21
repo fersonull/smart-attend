@@ -2,6 +2,7 @@ import { blueToViolet } from '@/modules/styles'
 import { useState } from 'react'
 import { Link } from '@inertiajs/react'
 import LoginModal from '@/Pages/Auth/LoginModal'
+import { RiLoginCircleLine } from "react-icons/ri";
 
 const Nav = () => {
 
@@ -9,7 +10,7 @@ const Nav = () => {
 
     return (
         <div>
-            <nav className='py-4'>
+            <nav className='py-md-4 py-3'>
                 <div className="container-lg d-flex align-items-center justif-content-center">
                     <div className="d-flex align-items-center justify-content-between w-100 h-100">
                         <div className="d-flex align-items-center justify-content-center">
@@ -22,10 +23,17 @@ const Nav = () => {
                         <div className="d-flex h-100 align-items-center justify-content-center">
                             <button
                                 onClick={() => setModal(!open)}
-                                className="px-3 py-1 rounded-pill bg-dark text-white poppins-semibold"
+                                className="px-3 py-1 rounded-pill bg-dark text-white poppins-semibold d-none d-md-flex align-items-center justify-content-center"
                             >
-                                Login
+                                <span className="">Login</span>
+                                {/* <RiLoginCircleLine className="ms-2" color='#1A53E4' /> */}
                             </button>
+                            <Link
+                                href=""
+                                className="p-2 rounded-circle bg-dark text-white poppins-semibold d-flex d-md-none align-items-center justify-content-center"
+                            >
+                                <RiLoginCircleLine color='white' />
+                            </Link>
                         </div>
                     </div>
                 </div>
