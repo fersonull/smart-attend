@@ -8,8 +8,12 @@ Route::inertia('/', 'Home');
 Route::get('/login', [AuthController::class, 'showLogin']);
 Route::post('/login', [AuthController::class, 'login']);
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'role:user'])->group(function () {
     Route::inertia('/dashboard', 'User/Dashboard');
     
     Route::post('/logout', [AuthController::class, 'logout']);
+});
+
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::inertia('/admin-dashboard', 'Admin/Dashboard');
 });

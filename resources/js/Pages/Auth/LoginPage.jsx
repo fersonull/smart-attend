@@ -2,6 +2,7 @@ import { Head } from "@inertiajs/react";
 import { bgGradientButton } from "@/modules/styles";
 import AuthLayout from "@/Layouts/AuthLayout";
 import { useForm } from "@inertiajs/react";
+import { motion } from "framer-motion";
 
 const LoginPage = () => {
     const { data, setData, errors, processing, post } = useForm({
@@ -19,7 +20,12 @@ const LoginPage = () => {
     }
 
     return (
-        <div className="p-4 bg-white shadow rounded">
+        <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            className="p-4 bg-white shadow rounded"
+        >
             <form onSubmit={submit}>
                 <h3 className="mb-4 display-5">Login</h3>
                 <div className=" d-flex flex-column gap-3">
@@ -66,7 +72,7 @@ const LoginPage = () => {
                     </button>
                 </div>
             </form>
-        </div>
+        </motion.div>
     );
 };
 

@@ -9,6 +9,8 @@ const Dashboard = () => {
         threshold: 0.2,
     });
 
+    console.log(router);
+
     const page = usePage();
     const { auth } = page.props;
 

@@ -31,7 +31,8 @@ class AuthController extends Controller
 
         if (Auth::attempt($cred)) {
             $request->session()->regenerate();
-            return redirect()->intended('/dashboard');
+            
+            return $this->redirectBaseOnRole(Auth::user()->role);
         }
 
         return back()->withErrors([
@@ -47,5 +48,18 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/login');
+    }
+
+    protected function redirectBaseOnRole($role)
+    {
+        switch ($role) {
+            case 'user':
+                return redirect('dashboard');
+            case 'admin':
+                return redirect('admin-dashboard');
+            default:
+                abort(403);
+                break;
+        }
     }
 }
