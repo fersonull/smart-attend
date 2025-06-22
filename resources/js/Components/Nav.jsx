@@ -8,8 +8,6 @@ const Nav = () => {
 
     const { auth } = usePage().props
 
-    // console.log(auth.user)
-
     return (
         <div>
             <nav className='py-md-4 py-3'>
@@ -25,34 +23,34 @@ const Nav = () => {
                         <div className="d-flex h-100 align-items-center justify-content-center">
                             {auth.user ? (
                                 <>
-                                    <Link
+                                    <a
                                         href="/dashboard"
-                                        className="px-3 py-2 rounded-pill bg-dark text-white poppins-semibold d-none d-md-flex align-items-center"
+                                        className="px-3 py-2 rounded-pill bg-dark text-white d-none d-md-flex align-items-center"
                                     >
                                         Dashboard
-                                    </Link>
-                                    <Link
+                                    </a>
+                                    <a
                                         href="/dashboard"
-                                        className="p-2 rounded-circle bg-dark text-white poppins-semibold d-md-none d-flex align-items-center"
+                                        className="p-2 rounded-circle bg-dark text-white d-md-none d-flex align-items-center"
                                     >
                                         <LayoutDashboard size={18} />
-                                    </Link>
+                                    </a>
                                 </>
                             ) : (
                                 <>
-                                    <Link
+                                    <a
                                         href="/login"
-                                        className="px-3 py-2 rounded-pill bg-dark text-white poppins-semibold d-none d-md-flex align-items-center justify-content-center"
+                                        className="px-3 py-2 rounded-pill bg-dark text-white d-none d-md-flex align-items-center justify-content-center"
                                     >
                                         <span className="">Login</span>
                                         {/* <RiLoginCircleLine className="ms-2" color='#1A53E4' /> */}
-                                    </Link>
-                                    <Link
+                                    </a>
+                                    <a
                                         href="/login"
-                                        className="p-2 rounded-circle bg-dark text-white poppins-semibold d-flex d-md-none align-items-center justify-content-center"
+                                        className="p-2 rounded-circle bg-dark text-white d-flex d-md-none align-items-center justify-content-center"
                                     >
                                         <RiLoginCircleLine color='white' />
-                                    </Link>
+                                    </a>
                                 </>
                             )}
                         </div>
