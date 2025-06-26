@@ -1,4 +1,5 @@
 import { blueToViolet } from "@/modules/styles";
+import { MdLogout } from "react-icons/md";
 
 const UserNav = () => {
     return (
@@ -18,7 +19,13 @@ const UserNav = () => {
                             </div>
                         </div>
                         <div className="d-flex h-100 align-items-center justify-content-center">
-                            {/*  */}
+                            <button
+                                className="px-2 py-1 border rounded shadow-sm text-danger"
+                                data-bs-toggle="modal"
+                                data-bs-target="#modal"
+                            >
+                                <MdLogout />
+                            </button>
                         </div>
                     </div>
                 </div>

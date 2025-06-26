@@ -2,7 +2,7 @@ import React from "react";
 
 const RecordTable = () => {
     return (
-        <div className="">
+        <div className="mb-5">
             <div className="card">
                 <div className="card-body table-responsive">
                     <h2 className="mb-2">Recent Records</h2>
