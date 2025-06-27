@@ -2,14 +2,8 @@ import { IoClose } from "react-icons/io5";
 
 const Modal = ({ children, isOpen = true, onClose }) => {
     return (
-        <div
-            className="modal fade"
-            id="modal"
-            tabindex="-1"
-            aria-labelledby="modal"
-            aria-hidden="true"
-        >
-            <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div className="modal fade" id="modal">
+            <div className="modal-dialog modal-sm modal-dialog-centered">
                 <div className="modal-content border position-relative">
                     <button
                         type="button"

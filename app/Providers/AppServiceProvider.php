@@ -23,9 +23,12 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Inertia::share([
-            'auth' => [
-                'user' => fn () => Auth::user(),
-                'qrCode' => fn () => (string) QRCodeController::encode(Auth::user()->id ?? "sdOdm0w!dmm13")
+            'auth' => fn () => [
+                'user' => Auth::user(),
+                'qrCode' => (string) QRCodeController::encode(Auth::user()->id ?? "sdOdm0w!dmm13")
+            ],
+            'flash' => fn () => [
+                'logOutMessage' => session('logOutMessage')
             ]
         ]);
     }

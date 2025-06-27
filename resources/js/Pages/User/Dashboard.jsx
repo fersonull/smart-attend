@@ -8,12 +8,10 @@ import Modal from "../../Components/Modal";
 import { PiWarningCircleBold } from "react-icons/pi";
 
 const Dashboard = () => {
-    const { ref, inView } = useInView({
-        triggerOnce: true,
-        threshold: 0.2,
-    });
-
-    // console.log(router);
+    // const { ref, inView } = useInView({
+    //     triggerOnce: true,
+    //     threshold: 0.2,
+    // });
 
     const page = usePage();
     const { auth } = page.props;
@@ -33,6 +31,8 @@ const Dashboard = () => {
                 <button
                     onClick={() => router.post("/logout")}
                     className="mt-2 px-2 py-1 border text-bg-danger rounded"
+                    data-bs-dismiss="modal"
+                    data-bs-target="#modal"
                 >
                     Confirm
                 </button>

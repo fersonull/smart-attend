@@ -47,7 +47,9 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/login');
+         session()->flash('logOutMessage', 'You are logged out.');
+
+        return Inertia::location('/login');
     }
 
     protected function redirectBaseOnRole($role)
