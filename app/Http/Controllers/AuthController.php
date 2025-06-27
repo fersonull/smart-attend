@@ -36,7 +36,7 @@ class AuthController extends Controller
         }
 
         return back()->withErrors([
-            'password' => 'Invalid'
+            'password' => 'Invalid credentials.'
         ]);
     }
 

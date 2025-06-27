@@ -4,7 +4,7 @@ import Nav from "@/Components/Nav";
 
 const Layout = ({ children }) => {
     return (
-        <div className="gradient vh-100 d-flex align-items-center justify-content-center just overflow-hidden">
+        <div className="vh-100 d-flex align-items-center justify-content-center just overflow-hidden">
             {children}
         </div>
     );
