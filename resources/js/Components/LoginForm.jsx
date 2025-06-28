@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "@inertiajs/react";
-import { blueToViolet } from "@/modules/styles";
+import { IoEye } from "react-icons/io5";
+import { blueToViolet, bgGradientButton } from "@/modules/styles";
 
 const LoginForm = () => {
     const { data, setData, errors, processing, post } = useForm({
@@ -42,6 +43,7 @@ const LoginForm = () => {
                                     </label>
                                     <input
                                         type="text"
+                                        value={data.email}
                                         placeholder="johndoe@gmail.com"
                                         className="form-control"
                                         onChange={(e) =>
@@ -49,24 +51,32 @@ const LoginForm = () => {
                                         }
                                     />
                                 </div>
-                                <div className="form-group w-100 mb-4">
+                                <div className="form-group w-100 mb-4 position-relative">
                                     <label htmlFor="" className="form-label">
                                         Password
                                     </label>
                                     <input
                                         type="password"
+                                        value={data.password}
                                         className="form-control"
                                         onChange={(e) =>
                                             setData("password", e.target.value)
                                         }
                                     />
+                                    <button
+                                        type="button"
+                                        className="position-absolute top-0 end-0"
+                                    >
+                                        <IoEye />
+                                    </button>
                                 </div>
 
                                 <button
-                                    className="border text-bg-primary px-2 py-2 rounded-pill w-100 nunito-extrab"
+                                    className="border px-2 py-2 rounded-pill w-100 nunito-extrab"
+                                    style={bgGradientButton}
                                     // onClick={}
                                 >
-                                    Login
+                                    {processing ? "..." : "Login"}
                                 </button>
                             </form>
                         </div>
