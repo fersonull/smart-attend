@@ -16,4 +16,5 @@ Route::middleware(['auth', 'role:user'])->group(function () {
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::inertia('/admin-dashboard', 'Admin/Dashboard');
+    Route::inertia('/students', 'Admin/Students');
 });
