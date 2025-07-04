@@ -21,8 +21,8 @@ const AdminNav = () => {
         { label: "Students", link: "/students", icon: <FaChildren /> },
     ];
 
-    console.log(url);
-    console.log(auth);
+    // console.log(url);
+    // console.log(auth);
 
     // console.log(navs[0].link);
     // console.log(isActive(url, navs[0].link));

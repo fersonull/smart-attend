@@ -19,5 +19,5 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::inertia('/admin-dashboard', 'Admin/Dashboard');
     Route::inertia('/students', 'Admin/Students');
 
-    Route::post('/verify-scan', [QRCodeController::class, 'verifyCode']);
+    
 });
