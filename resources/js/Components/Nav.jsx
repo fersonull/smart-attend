@@ -6,7 +6,7 @@ import { LayoutDashboard } from "lucide-react";
 
 const Nav = () => {
     const { auth } = usePage().props;
-    const { role } = auth.user;
+    const role = auth.user?.role;
 
     return (
         <div>

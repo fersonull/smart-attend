@@ -13,4 +13,9 @@ class QRCodeController extends Controller
 
         return $qrcode;
     }
+
+    public function verifyCode(Request $request)
+    {
+        return response()->json(['sampleData' => 'sample']);
+    }
 }

@@ -2,50 +2,76 @@ import { usePage } from "@inertiajs/react";
 import AdminLayout from "@/Layouts/AdminLayout";
 import { Scanner } from "@yudiel/react-qr-scanner";
 import { MdPause, MdPlayArrow } from "react-icons/md";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+// import axios from "axios";
 
 const Dashboard = () => {
     const page = usePage();
     const { auth } = page.props;
     const [paused, setPaused] = useState(false);
-    const [scannedID, setScannedID] = useState(null);
+    const [scannedIDs, setScannedID] = useState([]);
 
-    // console.log(auth.user);
+    const handleScan = async ([{ rawValue }]) => {
+        const newScanned = { id: rawValue };
 
-    const handleScan = ([{ rawValue }]) => {
-        setScannedID(rawValue);
-        // console.log(text);
+        try {
+            const res = await fetch("http://localhost:8000/verify-scan", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(newScanned),
+            });
+
+            const data = await res.json();
+            setScannedID((prev) => [...prev, newScanned]);
+
+            console.log(data);
+        } catch (error) {
+            console.error(error);
+        }
     };
+
+    const handleScanError = (err) => {
+        console.log(err);
+    };
+
+    console.log(scannedIDs);
 
     const pauseScan = () => setPaused(!paused);
 
     return (
         <div className="h-100">
-            <div>
-                <h2>Dashboard</h2>
-            </div>
-
-            <div className="w-100">
-                <div className="mx-auto p-3 border w-25 overflow-hidden rounded shadow-sm">
-                    <div className="rounded overflow-hidden">
-                        <Scanner
-                            onScan={handleScan}
-                            paused={paused}
-                            classNames={`rounded`}
-                        />
+            <div className="w-100 mt-5">
+                <div className="d-flex align-items-center justify-content-center w-100">
+                    <div className="flex-grow-1">
+                        <div className=" mx-auto p-3 border w-50 overflow-hidden rounded shadow-sm">
+                            <div className="rounded overflow-hidden">
+                                <Scanner
+                                    onScan={handleScan}
+                                    onError={handleScanError}
+                                    allowMultiple={false}
+                                    paused={paused}
+                                    classNames={`rounded`}
+                                />
+                            </div>
+                            <button
+                                onClick={pauseScan}
+                                className="mt-2 border rounded"
+                            >
+                                {paused ? (
+                                    <MdPlayArrow color="blue" />
+                                ) : (
+                                    <MdPause color="red" />
+                                )}
+                            </button>
+                        </div>
                     </div>
-                    <button onClick={pauseScan} className="mt-2 border rounded">
-                        {paused ? (
-                            <MdPlayArrow color="blue" />
-                        ) : (
-                            <MdPause color="red" />
-                        )}
-                    </button>
                 </div>
             </div>
 
             <div className="w-100">
-                <div className="mx-auto">Scanned ID: {scannedID}</div>
+                {/* <div className="mx-auto">Scanned ID: {scannedID}</div> */}
             </div>
         </div>
     );
